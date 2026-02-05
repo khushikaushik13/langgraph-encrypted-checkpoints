@@ -1,0 +1,5 @@
+SELECT checkpoint_id, checkpoint
+FROM checkpoints
+WHERE thread_id = 'reg_demo_1'
+ORDER BY checkpoint_id DESC
+LIMIT 1;
