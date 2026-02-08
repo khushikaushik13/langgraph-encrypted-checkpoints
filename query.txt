@@ -3,3 +3,26 @@ FROM checkpoints
 WHERE thread_id = 'reg_demo_1'
 ORDER BY checkpoint_id DESC
 LIMIT 1;
+
+SELECT
+  checkpoint_id,
+  checkpoint->'channel_values' AS channel_values
+FROM checkpoints
+WHERE thread_id = 'reg_demo_1'
+ORDER BY checkpoint_id DESC
+LIMIT 1;
+
+SELECT checkpoint_id, channel, type, blob, task_path
+FROM checkpoint_writes
+WHERE thread_id = 'reg_demo_1'
+ORDER BY checkpoint_id DESC
+LIMIT 20;
+
+
+
+"pan":{"__enc__": shjdhsk, "fmt"="pickle"}
+"phone":
+name: kh
+
+
+"channel_values": {"dob": "01-01-2004", "name": "Khushi", "email": "khushi@gmail.com","pan":{"__enc__": shjdhsk, "fmt"="pickle"},"phone":{}}
