@@ -11,17 +11,10 @@ class RegistrationGraphFactory:
 
     @staticmethod
     def collect_node(state: RegistrationState) -> RegistrationState:
-        """
-        No-op: graph.invoke(patch, config) already merges patch into state.
-        """
         return state
 
     @staticmethod
     def registration_complete(state: RegistrationState) -> RegistrationState:
-        """
-        Final point. State is guaranteed complete because conditional edge only
-        routes here when missing_fields == [].
-        """
         return state
 
     def build(self) -> StateGraph:

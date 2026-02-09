@@ -23,3 +23,4 @@ class PostgresConfig(BaseModel):
             user=os.environ["PG_USER"],
             password=os.environ["PG_PASSWORD"],
         )
+    

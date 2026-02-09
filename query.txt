@@ -1,28 +1,36 @@
-SELECT checkpoint_id, checkpoint
-FROM checkpoints
-WHERE thread_id = 'reg_demo_1'
-ORDER BY checkpoint_id DESC
-LIMIT 1;
-
+#channel_values in json
 SELECT
   checkpoint_id,
   checkpoint->'channel_values' AS channel_values
 FROM checkpoints
 WHERE thread_id = 'reg_demo_1'
 ORDER BY checkpoint_id DESC
-LIMIT 1;
+LIMIT 10;
 
-SELECT checkpoint_id, channel, type, blob, task_path
-FROM checkpoint_writes
-WHERE thread_id = 'reg_demo_1'
-ORDER BY checkpoint_id DESC
-LIMIT 20;
+#blobs
+SELECT
+  channel,
+  version,
+  type,
+  length(blob) AS blob_len,
+  left(encode(blob, 'escape'), 160) AS blob_preview
+FROM checkpoint_blobs
+WHERE thread_id='reg_demo_1'
+ORDER BY version DESC
+LIMIT 25;
 
 
 
-"pan":{"__enc__": shjdhsk, "fmt"="pickle"}
-"phone":
-name: kh
+
+docker commands:
+#create network
+docker network create lg-net
+
+#attach postgres container
+docker network connect lg-net langgraph-pg
+
+#run
+docker run --rm --network lg-net --env-file .env.docker langgraph-encrypted
 
 
-"channel_values": {"dob": "01-01-2004", "name": "Khushi", "email": "khushi@gmail.com","pan":{"__enc__": shjdhsk, "fmt"="pickle"},"phone":{}}
+

@@ -1,0 +1,7 @@
+langgraph
+langgraph-checkpoint-postgres
+langchain-core
+psycopg[binary]
+python-dotenv
+cryptography
+pydantic[email]

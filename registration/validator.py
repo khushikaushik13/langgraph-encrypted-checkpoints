@@ -33,7 +33,6 @@ class RegistrationValidator:
     def compute_missing_fields(self, state: RegistrationState) -> RegistrationState:
         missing: List[str] = []
 
-        # required fields missing/blank
         for field in self.required_fields:
             val = getattr(state, field, None)
             if val is None:
@@ -43,7 +42,6 @@ class RegistrationValidator:
                 missing.append(field)
                 continue
 
-        # also treat validation errors as missing until fixed
         for field in state.validation_errors.keys():
             if field not in missing:
                 missing.append(field)
