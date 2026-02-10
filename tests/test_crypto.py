@@ -1,5 +1,3 @@
-# tests/test_crypto.py
-
 import pytest
 from persistence.crypto import CryptoUtils
 
@@ -26,7 +24,6 @@ def test_ciphertext_tamper_fails():
     aad = b"aad"
     ct = CryptoUtils.encrypt_bytes(b"secret", aad)
 
-    # modify first character
     tampered = ("A" if ct[0] != "A" else "B") + ct[1:]
 
     with pytest.raises(Exception):

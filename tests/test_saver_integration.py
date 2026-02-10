@@ -1,5 +1,3 @@
-# tests/test_saver_integration.py
-
 import psycopg
 
 from config.postgres import PostgresConfig
@@ -38,7 +36,6 @@ def test_encryption_in_db_and_plaintext_on_read():
         config,
     )
 
-    # DB must contain encrypted wrapper
     cur = conn.cursor()
     cur.execute(
         """
@@ -54,7 +51,6 @@ def test_encryption_in_db_and_plaintext_on_read():
     assert row is not None
     assert "__enc__" in row[0]
 
-    # Graph read should give plaintext
     latest = graph.get_state(config)
     assert latest.values["email"] == "khushi@gmail.com"
     assert latest.values["pan"] == "ABCDE1234F"

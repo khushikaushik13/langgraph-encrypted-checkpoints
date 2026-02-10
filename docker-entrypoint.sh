@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "--------------------------------------"
 echo " LangGraph Encrypted Demo Starting"
-echo "--------------------------------------"
 
 : "${PG_HOST:=127.0.0.1}"
 : "${PG_PORT:=5432}"
